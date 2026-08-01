@@ -6,7 +6,7 @@ This repository hosts the public specifications, standards, and schemas for the 
 
 ## 📄 Current Specifications
 
-### 1. AI Agent Credit Scoring Standard v1.0 (DRAFT)
+### 1. AI Agent Credit Scoring Standard v1.0-draft
 - **Status**: Draft / Community Feedback
 - **Scope**: Defines a four-dimensional credit scoring model (300-850) for AI agents in payment scenarios.
 - **File**: [`/specs/credit-scoring-spec.md`](./specs/credit-scoring-spec.md)
@@ -31,9 +31,12 @@ This repository hosts the public specifications, standards, and schemas for the 
 ## 🤝 Contributing
 This is a community-driven effort. We welcome feedback, issues, and pull requests from developers, platforms, and researchers across the AI and payments ecosystem.
 
+See **[CONTRIBUTING.md](./CONTRIBUTING.md)** for guidelines.
+
 1. Read the [draft specification](./specs/credit-scoring-spec.md)
 2. Open an [Issue](https://github.com/rhcjw/paypack-specs/issues) for feedback
 3. Submit a [Pull Request](https://github.com/rhcjw/paypack-specs/pulls) for improvements
+4. Join the [Discussions](https://github.com/rhcjw/paypack-specs/discussions)
 
 ## 📧 Contact
 Maintainer: [rhcjw](https://github.com/rhcjw)

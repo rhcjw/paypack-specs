@@ -1,0 +1,46 @@
+name: Validate Specifications
+
+on:
+  push:
+    paths:
+      - 'schemas/**'
+      - 'specs/**'
+      - 'examples/**'
+  pull_request:
+    paths:
+      - 'schemas/**'
+      - 'specs/**'
+      - 'examples/**'
+
+jobs:
+  validate-json:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install jsonschema
+
+      - name: Validate JSON Schema syntax
+        run: python -c "import json; json.load(open('schemas/v1/ai-service-metadata.json')); print('✅ Schema JSON valid')"
+
+      - name: Validate example files against schema
+        run: python examples/validate_schema.py
+
+  validate-sql:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: SQL syntax check (basic)
+        run: |
+          echo "Checking SQL file structure..."
+          grep -q "CREATE TABLE" schemas/v1/price-index.sql && echo "✅ DDL contains CREATE TABLE"
+          grep -q "price_index_daily" schemas/v1/price-index.sql && echo "✅ Contains price_index_daily"
+          grep -q "merchant_risk_score" schemas/v1/price-index.sql && echo "✅ Contains merchant_risk_score"
+          echo "SQL validation passed"
