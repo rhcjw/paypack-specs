@@ -56,6 +56,18 @@ It does NOT replace payment protocols — it enriches them with machine-readable
 - [ ] Price Index Methodology Specification — *Q3 2026*
 - [ ] Trust Protocol Interoperability Standard — *Q4 2026*
 
+## 🚧 Current Development Status (2026-08)
+
+PVM is under active development. We are currently working on:
+
+- [x] Resolving weight inconsistency between credit-score.json and price-index.sql
+- [x] Defining risk_level assessment rules → [`specs/risk-assessment.md`](./specs/risk-assessment.md)
+- [x] Publishing trust_score methodology specification → [`specs/trust-score-methodology.md`](./specs/trust-score-methodology.md)
+- [ ] Price Index Methodology Specification — *Q3 2026*
+- [ ] Trust Protocol Interoperability Standard — *Q4 2026*
+
+For detailed audit findings, see [AUDIT-2026-08.md](./AUDIT-2026-08.md).
+
 ## 🤝 Contributing
 This is a community-driven effort. We welcome feedback, issues, and pull requests from developers, platforms, and researchers across the AI and payments ecosystem.
 

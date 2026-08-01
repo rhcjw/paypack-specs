@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://github.com/rhcjw/paypack-specs/raw/main/schemas/v1/credit-score.json",
   "title": "PayPack Merchant Credit Score",
-  "description": "Standardized merchant credit score for AI agent payment scenarios. Range: 300-850. Dimensions: price integrity (40%), fulfillment rate (30%), user rating (30%).",
+  "description": "Standardized merchant credit score for AI agent payment scenarios. Range: 300-850. Dimensions: price integrity (40%), fulfillment rate (30%), user rating (30%). Calculation methodology: specs/trust-score-methodology.md.",
   "type": "object",
   "required": ["score", "level", "updated_at"],
   "properties": {

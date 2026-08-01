@@ -50,7 +50,7 @@
     "risk_level": {
       "type": "string",
       "enum": ["LOW", "MEDIUM", "HIGH", "BLOCKED"],
-      "description": "Overall risk assessment"
+      "description": "Overall risk assessment. Determined per rules defined in specs/risk-assessment.md based on trust_score, price fairness, and feedback confidence."
     },
     "updated_at": {
       "type": "string",

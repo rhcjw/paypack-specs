@@ -49,6 +49,10 @@ For changes to specifications (files in `specs/`, `schemas/v1/`):
 - Assume good intent
 - Focus on the idea, not the person
 
+## 规范对齐声明
+
+本仓库中的 JSON Schema（`schemas/v1/*.json`）为权威定义，SQL 文件（`schemas/v1/*.sql`）为参考实现。若两者存在数值或权重差异，以 JSON Schema 为准。发现矛盾请提交 [Issue](https://github.com/rhcjw/paypack-specs/issues)。
+
 ## License
 
 By contributing, you agree that your contributions will be licensed under the [Apache 2.0 License](LICENSE).

@@ -89,7 +89,7 @@
           "type": "number",
           "minimum": 0,
           "maximum": 100,
-          "description": "Composite trust score calculated by PayPack Cloud based on historical transaction data, dispute rate, and uptime"
+          "description": "Composite trust score calculated by PayPack Cloud based on historical transaction data, dispute rate, and uptime. See specs/trust-score-methodology.md for the full calculation formula."
         },
         "total_calls_24h": {
           "type": "integer",
