@@ -1,0 +1,157 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/rhcjw/paypack-specs/raw/main/schemas/v1/ai-service-metadata.json",
+  "title": "PayPack AI Service Value Metadata",
+  "description": "Standard schema for AI agents to evaluate service value before initiating payment. x402/AP2 defines HOW to pay; this schema defines whether the payment is WORTH IT.",
+  "type": "object",
+  "required": ["service_id", "version", "pricing", "reputation"],
+  "properties": {
+    "service_id": {
+      "type": "string",
+      "description": "Unique identifier of the service, using reverse-domain notation (e.g., com.weather.pro.v1)"
+    },
+    "version": {
+      "type": "string",
+      "description": "Metadata schema version this file conforms to",
+      "default": "1.0.0"
+    },
+    "service_name": {
+      "type": "string",
+      "description": "Human-readable service name"
+    },
+    "description": {
+      "type": "string",
+      "description": "Brief description of what this service does, optimized for AI agent comprehension"
+    },
+    "pricing": {
+      "type": "object",
+      "required": ["model", "amount", "currency"],
+      "properties": {
+        "model": {
+          "type": "string",
+          "enum": ["fixed", "tiered", "dynamic"],
+          "description": "Pricing model: fixed price per call, tiered by volume, or dynamic based on usage"
+        },
+        "amount": {
+          "type": "number",
+          "description": "Base price per call, in the smallest unit of the specified currency (e.g., cents for USD, wei for ETH)"
+        },
+        "currency": {
+          "type": "string",
+          "enum": ["USD", "CNY", "USDC", "ETH"],
+          "default": "CNY"
+        },
+        "estimated_total_cost": {
+          "type": "number",
+          "description": "Estimated total cost including channel fees and gas. Provided by PayPack Cloud."
+        }
+      }
+    },
+    "performance": {
+      "type": "object",
+      "properties": {
+        "avg_latency_ms": {
+          "type": "number",
+          "description": "Average latency in milliseconds over the last 24 hours"
+        },
+        "success_rate": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "description": "Proportion of successful calls in the last 24 hours. 1.0 = 100% success."
+        },
+        "p99_latency_ms": {
+          "type": "number",
+          "description": "99th percentile latency in milliseconds over the last 24 hours"
+        }
+      }
+    },
+    "quality": {
+      "type": "object",
+      "properties": {
+        "accuracy_score": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "description": "Output accuracy score, applicable for AI/ML APIs"
+        },
+        "data_freshness_sec": {
+          "type": "number",
+          "description": "Maximum data staleness in seconds, for data APIs"
+        }
+      }
+    },
+    "reputation": {
+      "type": "object",
+      "required": ["trust_score"],
+      "properties": {
+        "trust_score": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100,
+          "description": "Composite trust score calculated by PayPack Cloud based on historical transaction data, dispute rate, and uptime"
+        },
+        "total_calls_24h": {
+          "type": "integer",
+          "description": "Total number of calls in the last 24 hours"
+        },
+        "dispute_rate": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "description": "Proportion of transactions disputed in the last 30 days"
+        },
+        "uptime_pct": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100,
+          "description": "Uptime percentage in the last 30 days"
+        }
+      }
+    },
+    "policy": {
+      "type": "object",
+      "properties": {
+        "refund_policy": {
+          "type": "string",
+          "enum": ["none", "auto_on_fail", "manual_review"],
+          "description": "Under what conditions refunds are granted"
+        },
+        "data_retention_days": {
+          "type": "integer",
+          "description": "How many days the service retains user data"
+        },
+        "sla": {
+          "type": "object",
+          "description": "Service Level Agreement commitments",
+          "properties": {
+            "uptime": {
+              "type": "string",
+              "description": "Committed uptime percentage (e.g. 99.9%)"
+            },
+            "max_latency_ms": {
+              "type": "number",
+              "description": "Maximum latency the provider guarantees"
+            },
+            "support_response_h": {
+              "type": "number",
+              "description": "Guaranteed support response time in hours"
+            }
+          }
+        }
+      }
+    },
+    "endpoints": {
+      "type": "array",
+      "description": "List of API endpoints this service exposes",
+      "items": {
+        "type": "object",
+        "properties": {
+          "path": { "type": "string", "description": "API path relative to service root" },
+          "method": { "type": "string", "enum": ["GET", "POST", "PUT", "DELETE"] },
+          "description": { "type": "string", "description": "Brief description of this endpoint" }
+        }
+      }
+    }
+  }
+}

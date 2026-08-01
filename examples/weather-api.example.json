@@ -1,0 +1,42 @@
+{
+  "service_id": "com.openweathermap.free.v1",
+  "version": "1.0.0",
+  "service_name": "OpenWeatherMap Free API",
+  "description": "Provides current weather data for any location. Suitable for AI agents that need real-time weather context for travel planning or outdoor activity recommendations.",
+  "pricing": {
+    "model": "fixed",
+    "amount": 0,
+    "currency": "USD",
+    "estimated_total_cost": 0
+  },
+  "performance": {
+    "avg_latency_ms": 120,
+    "success_rate": 0.998,
+    "p99_latency_ms": 500
+  },
+  "quality": {
+    "data_freshness_sec": 600
+  },
+  "reputation": {
+    "trust_score": 92,
+    "total_calls_24h": 1500000,
+    "dispute_rate": 0.001,
+    "uptime_pct": 99.95
+  },
+  "policy": {
+    "refund_policy": "none",
+    "data_retention_days": 30,
+    "sla": {
+      "uptime": "99.9%",
+      "max_latency_ms": 1000,
+      "support_response_h": 48
+    }
+  },
+  "endpoints": [
+    {
+      "path": "/data/2.5/weather",
+      "method": "GET",
+      "description": "Get current weather data by city name, city ID, or geographic coordinates"
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "service_id": "com.topup.mobile.v1",
+  "version": "1.0.0",
+  "service_name": "AI Mobile Top-Up Service",
+  "description": "Reliable mobile phone credit top-up service. Supports all major Chinese carriers. High success rate with automatic refund on failure.",
+  "pricing": {
+    "model": "fixed",
+    "amount": 100,
+    "currency": "CNY",
+    "estimated_total_cost": 100.6
+  },
+  "performance": {
+    "avg_latency_ms": 2500,
+    "success_rate": 0.992,
+    "p99_latency_ms": 8000
+  },
+  "quality": {
+    "accuracy_score": 0.99
+  },
+  "reputation": {
+    "trust_score": 88,
+    "total_calls_24h": 3200,
+    "dispute_rate": 0.005,
+    "uptime_pct": 99.8
+  },
+  "policy": {
+    "refund_policy": "auto_on_fail",
+    "data_retention_days": 90,
+    "sla": {
+      "uptime": "99.5%",
+      "max_latency_ms": 10000,
+      "support_response_h": 24
+    }
+  },
+  "endpoints": [
+    {
+      "path": "/api/v1/topup",
+      "method": "POST",
+      "description": "Submit a top-up request for a mobile number"
+    },
+    {
+      "path": "/api/v1/status",
+      "method": "GET",
+      "description": "Check the status of a submitted top-up request"
+    }
+  ]
+}
