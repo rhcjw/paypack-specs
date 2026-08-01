@@ -18,7 +18,10 @@ This JSON file is the AI agent's "Yelp for services" — machine-readable, suppo
 
 ## Quick Links
 
-- [Schema Definition](schemas/v1/ai-service-metadata.json)
+- [Service Metadata Schema](schemas/v1/ai-service-metadata.json)
+- [Credit System & Price Index](docs/credit-system.md) 🆕
+- [Price Index SQL Schema](schemas/v1/price-index.sql) 🆕
+- [Price Guard Hook Example](examples/price_guard.py) 🆕
 - [Integration Guide](docs/integration-guide.md)
 - [Example: Weather API](examples/weather-api.example.json)
 - [Example: Top-Up Service](examples/topup-service.example.json)
