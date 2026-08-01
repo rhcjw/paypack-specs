@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/rhcjw/paypack-specs/raw/main/schemas/v1/price-index.json",
+  "title": "PayPack Price Index",
+  "description": "Fair price index for a specific AI service, calculated daily from anonymized transaction data.",
+  "type": "object",
+  "required": ["benchmark", "fair_lower", "fair_upper", "sample_count", "updated_at"],
+  "properties": {
+    "benchmark": {
+      "type": "number",
+      "description": "Median price (the fair benchmark), in the smallest currency unit (e.g. wei for ETH, cents for USD)"
+    },
+    "p25_price": {
+      "type": "number",
+      "description": "25th percentile price"
+    },
+    "p75_price": {
+      "type": "number",
+      "description": "75th percentile price"
+    },
+    "fair_lower": {
+      "type": "number",
+      "description": "Lower bound of fair price range = max(0, P25 - 1.5 × IQR)"
+    },
+    "fair_upper": {
+      "type": "number",
+      "description": "Upper bound of fair price range = P75 + 1.5 × IQR"
+    },
+    "pvi": {
+      "type": "number",
+      "description": "Price Volatility Index (%) — how much today's benchmark differs from N days ago"
+    },
+    "sample_count": {
+      "type": "integer",
+      "description": "Number of successful transactions used to compute this index"
+    },
+    "currency": {
+      "type": "string",
+      "description": "Currency of all price values (e.g. USDC, USD, CNY)",
+      "default": "USDC"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 timestamp of index computation"
+    }
+  }
+}

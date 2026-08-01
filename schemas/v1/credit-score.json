@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/rhcjw/paypack-specs/raw/main/schemas/v1/credit-score.json",
+  "title": "PayPack Merchant Credit Score",
+  "description": "Standardized merchant credit score for AI agent payment scenarios. Range: 300-850. Dimensions: price integrity (40%), fulfillment rate (30%), user rating (30%).",
+  "type": "object",
+  "required": ["score", "level", "updated_at"],
+  "properties": {
+    "score": {
+      "type": "integer",
+      "minimum": 300,
+      "maximum": 850,
+      "description": "Composite credit score (300-850)"
+    },
+    "level": {
+      "type": "string",
+      "enum": ["A", "B", "C", "D", "E"],
+      "description": "Credit tier: A (≥750) / B (650-749) / C (550-649) / D (450-549) / E (<450)"
+    },
+    "dimensions": {
+      "type": "object",
+      "properties": {
+        "price_integrity": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100,
+          "description": "Price integrity sub-score (weight: 40%)"
+        },
+        "fulfillment_rate": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100,
+          "description": "Fulfillment rate sub-score (weight: 30%)"
+        },
+        "user_rating": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100,
+          "description": "Aggregated user rating normalized to 0-100 (weight: 30%)"
+        },
+        "dispute_rate": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100,
+          "description": "Dispute rate percentage over last 30 days"
+        }
+      }
+    },
+    "total_transactions": {
+      "type": "integer",
+      "description": "Total transactions used to compute this score"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 timestamp of score computation"
+    }
+  }
+}

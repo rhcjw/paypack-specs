@@ -1,0 +1,59 @@
+{
+  "x402Version": 2,
+  "accepts": [
+    {
+      "scheme": "exact",
+      "network": "base",
+      "maxAmountRequired": "10000",
+      "resource": "https://api.weather.com/v1/current",
+      "description": "Current weather data for any city",
+      "payTo": "0xabc123def45678901234567890abcdef12345678",
+      "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+      "extra": {
+        "pvm": {
+          "spec_version": "0.1.0",
+          "service_code": "com.weather.pro.v1",
+          "service_name": "Weather API Pro",
+          "price_index": {
+            "benchmark": 5000,
+            "p25_price": 3500,
+            "p75_price": 6500,
+            "fair_lower": 2000,
+            "fair_upper": 8000,
+            "pvi": 2.3,
+            "sample_count": 1280,
+            "currency": "USDC",
+            "updated_at": "2026-08-01T00:00:00Z"
+          },
+          "merchant_credit": {
+            "score": 780,
+            "level": "A",
+            "dimensions": {
+              "price_integrity": 85,
+              "fulfillment_rate": 98,
+              "user_rating": 92,
+              "dispute_rate": 0.3
+            },
+            "total_transactions": 50000,
+            "updated_at": "2026-08-01T00:00:00Z"
+          },
+          "feedback_aggregate": {
+            "total_reviews": 1280,
+            "weighted_score": 4.6,
+            "distribution": {
+              "1": 12,
+              "2": 23,
+              "3": 45,
+              "4": 380,
+              "5": 820
+            },
+            "confidence": 0.92,
+            "last_30d_reviews": 156
+          },
+          "risk_level": "LOW",
+          "updated_at": "2026-08-01T00:00:00Z"
+        }
+      }
+    }
+  ]
+}
